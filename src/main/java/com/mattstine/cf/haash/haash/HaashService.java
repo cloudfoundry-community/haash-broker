@@ -19,4 +19,19 @@ public class HaashService {
         hashMaps.remove(id);
     }
 
+    public void put(String id, Object key, Object value) {
+        Map<Object, Object> mapInstance = hashMaps.get(id);
+        mapInstance.put(key, value);
+    }
+
+    public Object get(String id, Object key) {
+        Map<Object, Object> mapInstance = hashMaps.get(id);
+        return mapInstance.get(key);
+    }
+
+    public void delete(String id, Object key) {
+        Map<Object, Object> mapInstance = hashMaps.get(id);
+        mapInstance.remove(key);
+    }
+
 }
