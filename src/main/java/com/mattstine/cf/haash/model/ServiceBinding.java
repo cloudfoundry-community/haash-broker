@@ -3,11 +3,13 @@ package com.mattstine.cf.haash.model;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "service_bindings")
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.NONE)
 public class ServiceBinding {
 
@@ -31,11 +33,6 @@ public class ServiceBinding {
     @JsonProperty("app_guid")
     @Column(nullable = true)
     private String appGuid;
-
-    @JsonSerialize
-    @JsonProperty("parameters")
-    @Column(nullable = true)
-    private String parameters;
 
     @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "service_binding_id")
